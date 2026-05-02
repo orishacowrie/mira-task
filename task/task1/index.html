@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f5f0;
+    --bg: #f4f7f5;
     --surface: #ffffff;
     --ink: #1a1916;
     --ink-muted: #6b6860;
-    --accent: #2d5a3d;
-    --accent-light: #e8f0eb;
+    --accent: #1a3d35;
+    --accent-light: #e4eeeb;
+    --accent-mid: #2d6b5a;
+    --green: #3db87a;
+    --green-light: #eaf7f1;
     --coral: #c85a3a;
     --coral-light: #f9ede9;
     --purple: #4a3f7a;
@@ -21,7 +24,7 @@
     --amber-light: #faf0e4;
     --teal: #1e6b6b;
     --teal-light: #e4f2f2;
-    --border: #e2ddd6;
+    --border: #d6e2dc;
     --radius: 10px;
   }
 
@@ -143,7 +146,7 @@
   .assumption-num {
     font-size: 11px;
     font-weight: 500;
-    color: var(--ink-muted);
+    color: var(--green);
     letter-spacing: 0.06em;
     margin-bottom: 6px;
   }
@@ -165,6 +168,22 @@
   }
 
   .section-card h3 { margin-top: 0; }
+
+  /* Intro block */
+  .intro-block {
+    background: var(--green-light);
+    border: 1px solid #a8dfc4;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+
+  .intro-block p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--accent);
+    line-height: 1.7;
+  }
 
   /* Form visualization */
   .form-visual {
@@ -262,6 +281,51 @@
     line-height: 1.3;
   }
 
+  /* Roadmap table */
+  .roadmap-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .roadmap-table th {
+    background: var(--accent);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .roadmap-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .roadmap-table tr:last-child td { border-bottom: none; }
+  .roadmap-table tr:nth-child(even) td { background: #f8faf9; }
+
+  .roadmap-table td:first-child {
+    font-weight: 500;
+    color: var(--accent);
+    white-space: nowrap;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  .roadmap-table td.empty {
+    color: var(--ink-muted);
+    font-size: 13px;
+    text-align: center;
+  }
+
   /* Metrics table */
   .metrics-section { margin-bottom: 28px; }
 
@@ -307,7 +371,7 @@
   }
 
   .metrics-cell.desc { color: var(--ink-muted); }
-  .metrics-cell.goal { color: var(--accent); font-weight: 500; }
+  .metrics-cell.goal { color: var(--accent-mid); font-weight: 500; }
 
   /* Risk table */
   .risk-table {
@@ -337,7 +401,7 @@
   }
 
   .risk-table tr:last-child td { border-bottom: none; }
-  .risk-table tr:nth-child(even) td { background: #faf9f7; }
+  .risk-table tr:nth-child(even) td { background: #f8faf9; }
 
   .risk-category {
     font-weight: 500;
@@ -351,7 +415,7 @@
   /* Formula box */
   .formula-box {
     background: var(--accent-light);
-    border: 1px solid #b8d4bf;
+    border: 1px solid #a8c8bc;
     border-radius: var(--radius);
     padding: 16px 20px;
     margin: 16px 0;
@@ -366,75 +430,22 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--teal-light);
-    border: 1px solid #9ecece;
+    background: var(--green-light);
+    border: 1px solid #a8dfc4;
     border-radius: 20px;
     padding: 8px 16px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--teal);
+    color: var(--accent-mid);
     margin: 16px 0;
   }
-
-  /* Q&A section */
-  .qa-item {
-    border-left: 3px solid var(--accent);
-    padding: 16px 20px;
-    margin-bottom: 16px;
-    background: var(--surface);
-    border-radius: 0 var(--radius) var(--radius) 0;
-  }
-
-  .qa-question {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 8px;
-    letter-spacing: 0.01em;
-  }
-
-  .qa-answer {
-    font-size: 14px;
-    color: var(--ink);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Timeline */
-  .timeline { margin: 16px 0; }
-
-  .timeline-item {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .timeline-marker {
-    flex-shrink: 0;
-    width: 80px;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding-top: 2px;
-    text-align: right;
-  }
-
-  .timeline-content {
-    flex: 1;
-    border-left: 2px solid var(--accent-light);
-    padding-left: 16px;
-    padding-bottom: 8px;
-  }
-
-  .timeline-content p { margin: 0; font-size: 14px; }
 
   @media (max-width: 600px) {
     .assumptions { grid-template-columns: 1fr; }
     .form-blocks { grid-template-columns: repeat(3, 1fr); }
     .metrics-grid { grid-template-columns: 1fr; }
     h1 { font-size: 28px; }
+    .roadmap-table { font-size: 13px; }
   }
 </style>
 </head>
@@ -451,163 +462,169 @@
 
   <!-- ASSUMPTIONS -->
   <h2>Assumptions</h2>
-  <p style="color:var(--ink-muted);font-size:14px;margin-bottom:20px;">For the purpose of this task, I operate with the following assumptions:</p>
+  <p style="color:var(--ink-muted);font-size:14px;margin-bottom:20px;">For the purpose of this task, I am working with the following assumptions:</p>
 
   <div class="assumptions">
     <div class="assumption-item">
       <div class="assumption-num">01</div>
-      <p class="assumption-text">Стартап — процесс review простой и не включает компетенции для каждой роли. Форма включает: цели, ценности, достижения, зоны развития, следующие шаги и итоговую оценку.</p>
+      <p class="assumption-text">This is a startup — the review process is straightforward and does not include role-specific competencies. The form covers: goals, values, achievements, development areas, next steps, and a final rating.</p>
     </div>
     <div class="assumption-item">
       <div class="assumption-num">02</div>
-      <p class="assumption-text">Оценка напрямую влияет на бонус, повышение и кадровый резерв.</p>
+      <p class="assumption-text">The rating directly affects bonus, promotion, and talent pipeline decisions.</p>
     </div>
     <div class="assumption-item">
       <div class="assumption-num">03</div>
-      <p class="assumption-text">Performance Review проводится ежеквартально. Каждый цикл включает оба блока — результаты и ценности.</p>
+      <p class="assumption-text">Performance Reviews are conducted quarterly. Each cycle includes both blocks — results and values.</p>
     </div>
     <div class="assumption-item">
       <div class="assumption-num">04</div>
-      <p class="assumption-text">В компании есть таск-трекер (Jira/Asana и др.)</p>
+      <p class="assumption-text">The company uses a task tracker (Jira/Asana or similar).</p>
     </div>
     <div class="assumption-item">
       <div class="assumption-num">05</div>
-      <p class="assumption-text">Процесс: постановка целей → самооценка → оценка менеджера → встреча → калибровка → финальные оценки → решения.</p>
+      <p class="assumption-text">The process flow: goal-setting → self-review → manager review → meeting → calibration → final ratings → decisions.</p>
     </div>
     <div class="assumption-item">
       <div class="assumption-num">06</div>
-      <p class="assumption-text">Перед изменением процесса собрана обратная связь от сотрудников и менеджеров. Изменения валидированы с внешними специалистами при отсутствии внутренней экспертизы.</p>
+      <p class="assumption-text">Before redesigning the process, feedback was collected from employees and managers. Changes were validated with external specialists where internal expertise was lacking.</p>
     </div>
     <div class="assumption-item">
       <div class="assumption-num">07</div>
-      <p class="assumption-text">Менеджеры умеют ставить цели. Цели каждого сотрудника отражают цели отдела, которые вытекают из целей компании.</p>
+      <p class="assumption-text">Managers know how to set goals. Each employee's goals reflect department goals, which derive from company goals.</p>
     </div>
     <div class="assumption-item">
       <div class="assumption-num">08</div>
-      <p class="assumption-text">После каждого цикла проводится survey для сбора обратной связи — результаты используются для улучшения процесса.</p>
-    </div>
-    <div class="assumption-item">
-      <div class="assumption-num">09</div>
-      <p class="assumption-text">Единая пятиуровневая шкала для целей, ценностей и итоговой оценки: Does Not Meet / Partially Meets / Meets / Exceeds / Outstanding.</p>
-    </div>
-    <div class="assumption-item">
-      <div class="assumption-num">10</div>
-      <p class="assumption-text">Для каждой ценности — 5 уровней проявленности с поведенческими примерами. Поле комментария активируется только при расхождении self-review и оценки менеджера.</p>
+      <p class="assumption-text">After each cycle, a survey is conducted to collect feedback — results are used to improve the process.</p>
     </div>
     <div class="assumption-item" style="grid-column: span 2;">
-      <div class="assumption-num">11</div>
-      <p class="assumption-text">Финальная оценка = взвешенное среднее: Цели × 70% + Ценности × 30%. Веса определяются компанией и могут быть скорректированы.</p>
+      <div class="assumption-num">09</div>
+      <p class="assumption-text">For each value, there are 5 levels of behavioral expression with examples. The comment field is activated only when there is a discrepancy between self-review and manager review.</p>
     </div>
   </div>
 
   <hr class="divider">
 
   <!-- VALIDATION -->
-  <h2>Валидация</h2>
+  <h2>Validation</h2>
 
-  <div class="section-card">
-    <h3>До запуска</h3>
-    <p>Прежде чем переходить к методам валидации, я бы задала несколько базовых вопросов: какую задачу мы решаем через проведение PR? Какую задачу решают текущие изменения? Отвечает ли каждое изменение нашей главной цели?</p>
-    <p>За 3–4 недели до общего запуска — пилот с 10–15 людьми из разных команд, ролей и уровней. Собираю обратную связь через анонимный опрос и фокус-группу. Смотрю на конкретные метрики: время заполнения, полнота ответов, качество самооценок и обратной связи от менеджеров. Поскольку перед редизайном уже была собрана обратная связь — пилот это финальная проверка, не открытие с нуля.</p>
+  <div class="intro-block">
+    <p>Before moving to validation methods, I would start by asking a few foundational questions: what problem are we solving through performance reviews? What problem do the current changes address? Does each change serve our primary goal?</p>
   </div>
 
   <div class="section-card">
-    <h3>После окончания цикла</h3>
-    <p>Survey — встроенная часть каждого цикла. Анализирую результаты в сравнении с предыдущими периодами: % завершённых вовремя, средний NPS процесса, качество данных. Через 1–2 месяца провожу несколько 1:1 с менеджерами и сотрудниками — смотрю на влияние review на мотивацию и развитие.</p>
-    <p>Главный критерий: повлияли ли результаты review на решения по бонусам, повышениям и кадровому резерву.</p>
+    <h3>Before launch</h3>
+    <p>3–4 weeks before the general launch — a pilot with 10–15 people from different teams, roles, and levels. I collect feedback through an anonymous survey and a focus group. I look at specific metrics: time to complete, completeness of responses, quality of self-assessments and manager feedback. Since feedback was already collected before the redesign, the pilot is a final validation check, not starting from scratch.</p>
   </div>
 
   <div class="section-card">
-    <h3>Долгосрок (1–2 года)</h3>
-    <p>Смотрю на корреляцию трендов PR-аналитики с бизнес- и HR-метриками: есть ли связь с динамикой вовлечённости, текучки и производительности.</p>
+    <h3>After the cycle</h3>
+    <p>The survey is a built-in part of every cycle. I analyze results compared to previous periods: % completed on time, average process NPS, data quality. 1–2 months later I conduct several 1:1s with managers and employees — looking at the impact of reviews on motivation and development.</p>
+  </div>
+
+  <div class="section-card">
+    <h3>Long term (1–2 years)</h3>
+    <p>I track the correlation between performance review analytics trends and business and HR metrics: whether there is a connection with engagement, turnover, and productivity dynamics.</p>
   </div>
 
   <hr class="divider">
 
   <!-- COMMUNICATION -->
-  <h2>Коммуникация и обучение</h2>
+  <h2>Communication and training</h2>
 
   <div class="section-card">
-    <h3>Roadmap</h3>
-    <p>Минимум месяц до запуска — на коммуникации, обучение и подготовку команды. Сроки и дедлайны проходят красной нитью через все активности.</p>
+    <p>At least one month before launch is dedicated to communication, training, and team preparation. Timelines and deadlines run as a consistent thread through all activities.</p>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-marker">T−4 нед.</div>
-        <div class="timeline-content"><p>Живая онлайн-встреча с менеджерами, CEO и HR Manager. Анонс во всех корпоративных каналах (email, Slack). Все коммуникации связаны с ценностями компании, бизнес-результатами и личными бенефитами каждого.</p></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-marker">T−2 нед.</div>
-        <div class="timeline-content"><p>Встречи менеджеров и HR Generalist с командами. Loom-видео (5–7 мин). Гайд в Notion + Q&A. Микро-лёрнинг в рассылках.</p></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-marker">T−1 нед.</div>
-        <div class="timeline-content"><p>Тесты по итогам обучения с геймификацией — Early Birds получают награды. Частота коммуникаций: 2–3 раза в неделю.</p></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-marker">T+0</div>
-        <div class="timeline-content"><p>Запуск. Каждый получает прямую ссылку на свою форму. Автоматические напоминания включены.</p></div>
-      </div>
-    </div>
+    <table class="roadmap-table">
+      <thead>
+        <tr>
+          <th>Timeline</th>
+          <th>Communication</th>
+          <th>Training</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T−4 weeks</td>
+          <td>Live online meeting with managers, CEO, and HR Manager. Announcement across all corporate channels (email, Slack). All messages are connected to company values, business results, and personal benefits for each employee — with a specific focus on changes to the form and questions: why they changed and what this brings.</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>T−2 weeks</td>
+          <td>Meetings of managers and HR Generalist with their teams. Reminders across corporate channels (email, Slack, etc.).</td>
+          <td>Separate live online sessions for managers and employees — different content, different focus. Notion guide + Q&A — a live document, updated as questions come in. Short Loom videos available to everyone — can be revisited at any time. Micro-learning — short tips in regular corporate newsletters throughout the launch period.</td>
+        </tr>
+        <tr>
+          <td>T−1 week</td>
+          <td>Deadline reminders 2–3 times per week.</td>
+          <td>Post-training tests with gamification elements: fast and correct completion earns small rewards, individual or team-based. This serves both as a knowledge check and as additional motivation to complete on time.</td>
+        </tr>
+        <tr>
+          <td>T+0</td>
+          <td>Each person receives a direct link to their form. Automated reminders are active.</td>
+          <td class="empty">—</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <hr class="divider">
 
   <!-- ROLE OF HR MANAGER -->
-  <h2>Роль HR Manager</h2>
+  <h2>Role of the HR Manager</h2>
   <div class="section-card">
-    <p>HR Manager и CEO подписывают основные письменные коммуникации — это сигнал что процесс важен и поддержан на уровне руководства.</p>
-    <p>HR Manager самостоятельно проводит встречу с менеджерами и делает финальную коммуникацию по результатам после окончания цикла.</p>
-    <p>Вся операционная работа — на HR Generalist. HR Manager подключается в случае эскалаций.</p>
+    <p>The HR Manager and CEO sign the main written communications — this signals that the process is important and supported at the leadership level.</p>
+    <p>The HR Manager independently runs the meeting with managers and delivers the final communication on results after the cycle closes.</p>
+    <p>All operational work sits with the HR Generalist. The HR Manager steps in for escalations.</p>
   </div>
 
   <hr class="divider">
 
   <!-- COMPLETION RATE -->
-  <h2>Как улучшить completion rate</h2>
+  <h2>How to improve completion rate</h2>
   <div class="section-card">
     <ul>
-      <li>Своевременное завершение оценки — в KPI менеджеров.</li>
-      <li>Все контрольные точки заранее вносятся в календари участников.</li>
-      <li>Максимальная автоматизация загрузки данных: цели подтягиваются из таск-трекера автоматически.</li>
-      <li>Баланс между числовыми оценками и открытыми вопросами — форма не перегружает.</li>
-      <li>Дашборд в реальном времени — менеджеры видят прогресс своей команды.</li>
-      <li>Автоматизированные уведомления из Notion при наступлении триггерных событий.</li>
-      <li>Геймификация: Early Birds — командные и индивидуальные награды за завершение в срок.</li>
-      <li>Формы оптимизированы под мобильную версию.</li>
-      <li>Для каждой ценности — 5 уровней проявленности с поведенческими примерами. Поле комментария активируется только при расхождении.</li>
+      <li>Completing reviews on time is included in managers' KPIs.</li>
+      <li>All key milestones are added to participants' calendars in advance.</li>
+      <li>Maximum automation of data loading: goals are pulled from the task tracker automatically.</li>
+      <li>A balance between numerical ratings and open-ended questions — the form does not overload.</li>
+      <li>Real-time dashboard — managers can see their team's progress.</li>
+      <li>Automated notifications from Notion triggered by key events.</li>
+      <li>Gamification: Early Birds — team and individual rewards for completing on time.</li>
+      <li>Forms are optimized for mobile.</li>
+      <li>For each value, there are 5 levels of behavioral expression with examples. The comment field is activated only when there is a discrepancy — this saves time on completion.</li>
     </ul>
   </div>
 
   <hr class="divider">
 
   <!-- AUTOMATION -->
-  <h2>Автоматизация</h2>
+  <h2>Automation</h2>
 
   <div class="section-card">
-    <h3>Форма оценки</h3>
+    <h3>Review form</h3>
     <div class="form-visual">
-      <div class="form-label">Database Template — одна карточка = один сотрудник × один цикл</div>
+      <div class="form-label">Database Template — one card = one employee × one cycle</div>
       <div class="form-blocks">
         <div class="form-block">
-          <div class="form-block-title">Цели</div>
-          <div class="form-block-sub">1–5, вес 70%</div>
+          <div class="form-block-title">Goals</div>
+          <div class="form-block-sub">1–5, weight 70%</div>
         </div>
         <div class="form-block">
-          <div class="form-block-title">Ценности</div>
-          <div class="form-block-sub">1–5, вес 30%</div>
+          <div class="form-block-title">Values</div>
+          <div class="form-block-sub">1–5, weight 30%</div>
         </div>
         <div class="form-block">
-          <div class="form-block-title">Достижения</div>
-          <div class="form-block-sub">2–3 пункта</div>
+          <div class="form-block-title">Achievements</div>
+          <div class="form-block-sub">2–3 points</div>
         </div>
         <div class="form-block">
-          <div class="form-block-title">Развитие</div>
-          <div class="form-block-sub">1–2 зоны</div>
+          <div class="form-block-title">Development</div>
+          <div class="form-block-sub">1–2 areas</div>
         </div>
         <div class="form-block">
-          <div class="form-block-title">Итог</div>
-          <div class="form-block-sub">Авторасчёт</div>
+          <div class="form-block-title">Final score</div>
+          <div class="form-block-sub">Auto-calculated</div>
         </div>
       </div>
       <div class="form-cols">
@@ -617,12 +634,12 @@
     </div>
 
     <div class="formula-box">
-      Финальная оценка = Цели × 0.7 + Ценности × 0.3
+      Final score = Goals × 0.7 + Values × 0.3
     </div>
   </div>
 
   <div class="section-card">
-    <h3>Единая шкала оценки</h3>
+    <h3>Rating scale</h3>
     <div class="scale-band">
       <div class="scale-item" style="background:#fce8e3;color:#8b2a15;">
         <div class="num">1</div>
@@ -632,15 +649,15 @@
         <div class="num">2</div>
         <div class="label">Partially Meets</div>
       </div>
-      <div class="scale-item" style="background:#f0f4e8;color:#3a5a1a;">
+      <div class="scale-item" style="background:#e4f2eb;color:#1a4d35;">
         <div class="num">3</div>
         <div class="label">Meets Expectations</div>
       </div>
-      <div class="scale-item" style="background:#e4f0f0;color:#1a5050;">
+      <div class="scale-item" style="background:#d4ecdf;color:#1a3d2a;">
         <div class="num">4</div>
         <div class="label">Exceeds Expectations</div>
       </div>
-      <div class="scale-item" style="background:#eceaf8;color:#3a3068;">
+      <div class="scale-item" style="background:#c6e8d4;color:#0d3020;">
         <div class="num">5</div>
         <div class="label">Outstanding</div>
       </div>
@@ -648,8 +665,8 @@
   </div>
 
   <div class="section-card">
-    <h3>Архитектура Notion</h3>
-    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px;">Пять связанных баз данных. Данные подтягиваются автоматически через Relation и Rollup.</p>
+    <h3>Notion architecture</h3>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px;">Five interconnected databases. Data is pulled automatically via Relation and Rollup.</p>
 
     <svg width="100%" viewBox="0 0 780 620" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;">
       <defs>
@@ -662,12 +679,12 @@
       </defs>
 
       <!-- ROW 1: Sources -->
-      <text x="390" y="20" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">ВХОДЯЩИЕ ДАННЫЕ</text>
+      <text x="390" y="20" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">INPUT DATA</text>
       <rect x="60" y="30" width="200" height="50" rx="8" fill="#faf0e4" stroke="#d4a870" stroke-width="1"/>
-      <text x="160" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#7a4a10" font-family="DM Sans, sans-serif">Таск-трекер</text>
-      <text x="160" y="68" text-anchor="middle" font-size="11" fill="#9a6a30" font-family="DM Sans, sans-serif">Цели сотрудников</text>
+      <text x="160" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#7a4a10" font-family="DM Sans, sans-serif">Task tracker</text>
+      <text x="160" y="68" text-anchor="middle" font-size="11" fill="#9a6a30" font-family="DM Sans, sans-serif">Employee goals</text>
       <rect x="520" y="30" width="200" height="50" rx="8" fill="#faf0e4" stroke="#d4a870" stroke-width="1"/>
-      <text x="620" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#7a4a10" font-family="DM Sans, sans-serif">HR — справочники</text>
+      <text x="620" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#7a4a10" font-family="DM Sans, sans-serif">HR — reference data</text>
       <text x="620" y="68" text-anchor="middle" font-size="11" fill="#9a6a30" font-family="DM Sans, sans-serif">Employees · Values · Cycles</text>
 
       <!-- arrows row1 → form -->
@@ -675,37 +692,37 @@
       <path d="M620 80 Q620 108 560 128" stroke="#6b6860" stroke-width="1" marker-end="url(#arr)" fill="none"/>
 
       <!-- ROW 2: Form -->
-      <text x="390" y="118" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">ФОРМА ОЦЕНКИ — DATABASE TEMPLATE</text>
-      <rect x="20" y="128" width="740" height="118" rx="10" fill="#f9ede9" stroke="#c85a3a" stroke-width="1"/>
+      <text x="390" y="118" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">REVIEW FORM — DATABASE TEMPLATE</text>
+      <rect x="20" y="128" width="740" height="118" rx="10" fill="#e8f4ee" stroke="#3db87a" stroke-width="1"/>
       <rect x="36" y="142" width="130" height="52" rx="6" fill="#eeecf6" stroke="#b0aad8" stroke-width="1"/>
-      <text x="101" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Цели</text>
-      <text x="101" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">1–5, вес 70%</text>
+      <text x="101" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Goals</text>
+      <text x="101" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">1–5, weight 70%</text>
       <rect x="176" y="142" width="130" height="52" rx="6" fill="#eeecf6" stroke="#b0aad8" stroke-width="1"/>
-      <text x="241" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Ценности</text>
-      <text x="241" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">1–5, вес 30%</text>
+      <text x="241" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Values</text>
+      <text x="241" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">1–5, weight 30%</text>
       <rect x="316" y="142" width="130" height="52" rx="6" fill="#eeecf6" stroke="#b0aad8" stroke-width="1"/>
-      <text x="381" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Достижения</text>
-      <text x="381" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">2–3 пункта</text>
+      <text x="381" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Achievements</text>
+      <text x="381" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">2–3 points</text>
       <rect x="456" y="142" width="130" height="52" rx="6" fill="#eeecf6" stroke="#b0aad8" stroke-width="1"/>
-      <text x="521" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Развитие</text>
-      <text x="521" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">1–2 зоны</text>
+      <text x="521" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Development</text>
+      <text x="521" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">1–2 areas</text>
       <rect x="596" y="142" width="128" height="52" rx="6" fill="#eeecf6" stroke="#b0aad8" stroke-width="1"/>
-      <text x="660" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Итог</text>
-      <text x="660" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">Авторасчёт</text>
+      <text x="660" y="162" text-anchor="middle" font-size="12" font-weight="500" fill="#4a3f7a" font-family="DM Sans, sans-serif">Final score</text>
+      <text x="660" y="178" text-anchor="middle" font-size="10" fill="#6b6490" font-family="DM Sans, sans-serif">Auto-calculated</text>
       <text x="250" y="230" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Self-review + Manager review</text>
-      <text x="570" y="230" text-anchor="middle" font-size="11" fill="#c85a3a" font-family="DM Sans, sans-serif" font-weight="500">Цели×0.7 + Ценности×0.3</text>
+      <text x="570" y="230" text-anchor="middle" font-size="11" fill="#1a6040" font-family="DM Sans, sans-serif" font-weight="500">Goals×0.7 + Values×0.3</text>
 
       <!-- ROW 3: Roles -->
-      <text x="390" y="272" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">КТО ЗАПОЛНЯЕТ И ВИДИТ</text>
+      <text x="390" y="272" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">WHO FILLS IN AND WHO HAS ACCESS</text>
       <rect x="20" y="282" width="210" height="52" rx="8" fill="#f5f5f3" stroke="#c8c4bc" stroke-width="1"/>
-      <text x="125" y="302" text-anchor="middle" font-size="13" font-weight="500" fill="#1a1916" font-family="DM Sans, sans-serif">Сотрудник</text>
-      <text x="125" y="320" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Полный доступ к своей форме</text>
+      <text x="125" y="302" text-anchor="middle" font-size="13" font-weight="500" fill="#1a1916" font-family="DM Sans, sans-serif">Employee</text>
+      <text x="125" y="320" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Full access to own form</text>
       <rect x="285" y="282" width="210" height="52" rx="8" fill="#f5f5f3" stroke="#c8c4bc" stroke-width="1"/>
-      <text x="390" y="302" text-anchor="middle" font-size="13" font-weight="500" fill="#1a1916" font-family="DM Sans, sans-serif">Менеджер</text>
-      <text x="390" y="320" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Формы команды + дашборд</text>
-      <rect x="550" y="282" width="210" height="52" rx="8" fill="#f9ede9" stroke="#c85a3a" stroke-width="1"/>
-      <text x="655" y="302" text-anchor="middle" font-size="13" font-weight="500" fill="#8a3020" font-family="DM Sans, sans-serif">Admin / HR</text>
-      <text x="655" y="320" text-anchor="middle" font-size="11" fill="#9a4030" font-family="DM Sans, sans-serif">Все базы + калибровка</text>
+      <text x="390" y="302" text-anchor="middle" font-size="13" font-weight="500" fill="#1a1916" font-family="DM Sans, sans-serif">Manager</text>
+      <text x="390" y="320" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Team forms + dashboard</text>
+      <rect x="550" y="282" width="210" height="52" rx="8" fill="#e4eeeb" stroke="#1a3d35" stroke-width="1"/>
+      <text x="655" y="302" text-anchor="middle" font-size="13" font-weight="500" fill="#1a3d35" font-family="DM Sans, sans-serif">Admin / HR</text>
+      <text x="655" y="320" text-anchor="middle" font-size="11" fill="#2d6b5a" font-family="DM Sans, sans-serif">All databases + calibration</text>
 
       <!-- arrows form → roles -->
       <path d="M125 248 L125 280" stroke="#b0aba4" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr2)" fill="none"/>
@@ -713,10 +730,10 @@
       <path d="M570 248 Q655 264 655 280" stroke="#6b6860" stroke-width="1" marker-end="url(#arr)" fill="none"/>
 
       <!-- ROW 4: Central DB -->
-      <text x="390" y="376" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">ЦЕНТРАЛЬНАЯ БАЗА ДАННЫХ NOTION (ТОЛЬКО HR)</text>
-      <rect x="160" y="386" width="460" height="52" rx="8" fill="#e4f2f2" stroke="#1e6b6b" stroke-width="1.5"/>
-      <text x="390" y="408" text-anchor="middle" font-size="14" font-weight="500" fill="#1a5050" font-family="DM Sans, sans-serif">Performance Reviews</text>
-      <text x="390" y="426" text-anchor="middle" font-size="11" fill="#2a7070" font-family="DM Sans, sans-serif">Все карточки · формула · статусы</text>
+      <text x="390" y="376" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">CENTRAL NOTION DATABASE (HR ONLY)</text>
+      <rect x="160" y="386" width="460" height="52" rx="8" fill="#d4ecdf" stroke="#1a3d35" stroke-width="1.5"/>
+      <text x="390" y="408" text-anchor="middle" font-size="14" font-weight="500" fill="#1a3d35" font-family="DM Sans, sans-serif">Performance Reviews</text>
+      <text x="390" y="426" text-anchor="middle" font-size="11" fill="#2d6b5a" font-family="DM Sans, sans-serif">All cards · formula · statuses</text>
 
       <!-- arrows roles → base -->
       <path d="M125 334 Q125 368 220 388" stroke="#b0aba4" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr2)" fill="none"/>
@@ -724,170 +741,163 @@
       <path d="M655 334 Q655 368 560 388" stroke="#6b6860" stroke-width="1" marker-end="url(#arr)" fill="none"/>
 
       <!-- ROW 5: Output -->
-      <text x="390" y="476" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">АВТОМАТИЧЕСКИ ЧЕРЕЗ ZAPIER / MAKE</text>
+      <text x="390" y="476" text-anchor="middle" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif" letter-spacing="1" font-weight="500">AUTOMATED VIA ZAPIER / MAKE</text>
       <rect x="60" y="486" width="270" height="52" rx="8" fill="#e6f0f8" stroke="#185fa5" stroke-width="1"/>
-      <text x="195" y="508" text-anchor="middle" font-size="13" font-weight="500" fill="#0c447c" font-family="DM Sans, sans-serif">Уведомления</text>
+      <text x="195" y="508" text-anchor="middle" font-size="13" font-weight="500" fill="#0c447c" font-family="DM Sans, sans-serif">Notifications</text>
       <text x="195" y="526" text-anchor="middle" font-size="11" fill="#185fa5" font-family="DM Sans, sans-serif">→ Slack / Email</text>
       <rect x="450" y="486" width="270" height="52" rx="8" fill="#eaf3de" stroke="#3b6d11" stroke-width="1"/>
       <text x="585" y="508" text-anchor="middle" font-size="13" font-weight="500" fill="#27500a" font-family="DM Sans, sans-serif">Google Sheets</text>
-      <text x="585" y="526" text-anchor="middle" font-size="11" fill="#3b6d11" font-family="DM Sans, sans-serif">Аналитика после цикла</text>
+      <text x="585" y="526" text-anchor="middle" font-size="11" fill="#3b6d11" font-family="DM Sans, sans-serif">Analytics after cycle close</text>
 
       <path d="M280 438 Q195 462 195 484" stroke="#6b6860" stroke-width="1" marker-end="url(#arr)" fill="none"/>
       <path d="M500 438 Q585 462 585 484" stroke="#6b6860" stroke-width="1" marker-end="url(#arr)" fill="none"/>
 
       <!-- Scalable -->
-      <rect x="200" y="562" width="380" height="36" rx="18" fill="#e4f2f2" stroke="#1e6b6b" stroke-width="1"/>
-      <text x="390" y="584" text-anchor="middle" font-size="12" font-weight="500" fill="#1a5050" font-family="DM Sans, sans-serif">Scalable: работает от 10 до 1000+ человек</text>
+      <rect x="200" y="562" width="380" height="36" rx="18" fill="#d4ecdf" stroke="#1a3d35" stroke-width="1"/>
+      <text x="390" y="584" text-anchor="middle" font-size="12" font-weight="500" fill="#1a3d35" font-family="DM Sans, sans-serif">Scalable: works from 10 to 1000+ people</text>
       <path d="M390 540 L390 560" stroke="#b0aba4" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr2)" fill="none"/>
 
       <!-- Legend -->
       <line x1="30" y1="612" x2="54" y2="612" stroke="#6b6860" stroke-width="1"/>
-      <text x="60" y="616" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Прямой доступ / автоматически</text>
+      <text x="60" y="616" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Direct access / automated</text>
       <line x1="280" y1="612" x2="304" y2="612" stroke="#b0aba4" stroke-width="1" stroke-dasharray="4 3"/>
-      <text x="310" y="616" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Ограниченный доступ к форме</text>
+      <text x="310" y="616" font-size="11" fill="#6b6860" font-family="DM Sans, sans-serif">Limited access to form</text>
     </svg>
   </div>
 
   <div class="section-card">
-    <h3>Где убираем ручную работу</h3>
+    <h3>Where we eliminate manual work</h3>
     <ul>
-      <li>Данные о целях подтягиваются автоматически — сотрудник открывает форму с уже заполненными целями. Экономия: 30–40% времени на заполнение.</li>
-      <li>Карточки создаются автоматически в начале цикла — HR не создаёт 70 карточек вручную.</li>
-      <li>Финальный балл считается автоматически по формуле — HR не сводит таблицы руками.</li>
-      <li>Уведомления о дедлайнах и смене статусов уходят автоматически через Zapier → Slack / Email.</li>
-      <li>Выгрузка в Google Sheets после закрытия цикла — автоматически через Zapier.</li>
+      <li>Goal data is pulled automatically — the employee opens the form with goals already populated. Estimated saving: 30–40% of completion time.</li>
+      <li>Review cards are created automatically at the start of each cycle — HR does not manually create 70 cards.</li>
+      <li>The final score is calculated automatically using a formula — HR does not consolidate spreadsheets by hand.</li>
+      <li>Deadline and status-change notifications are sent automatically via Zapier → Slack / Email.</li>
+      <li>Export to Google Sheets after the cycle closes — automatically via Zapier.</li>
     </ul>
 
-    <h3>Где обеспечиваем консистентность</h3>
+    <h3>Where we ensure consistency</h3>
     <ul>
-      <li>Единый шаблон — все заполняют одну форму с одинаковыми вопросами и шкалами.</li>
-      <li>Поведенческие якоря для каждого уровня ценностей убирают субъективность и разночтения на калибровке.</li>
-      <li>Единая формула расчёта финальной оценки — результат не зависит от менеджера.</li>
-      <li>Статусы: Not Started → In Progress → Submitted → Manager Review → Completed.</li>
-      <li>Калибровка на одних данных — расхождения между менеджерами видны сразу.</li>
+      <li>A single template — everyone completes the same form with the same questions and rating scales.</li>
+      <li>Behavioral anchors for each value level eliminate subjectivity and inconsistencies during calibration.</li>
+      <li>A single formula for calculating the final rating — the result does not depend on the individual manager.</li>
+      <li>Statuses: Not Started → In Progress → Submitted → Manager Review → Completed.</li>
+      <li>Calibration is based on the same data — gaps between managers are immediately visible.</li>
     </ul>
 
-    <h3>Масштабируемость</h3>
+    <h3>Scalability</h3>
     <div class="scalable-badge">✦ Scalable architecture</div>
-    <p>Эта архитектура scalable — компания может расти без смены HR-стека. При увеличении команды с 70 до 300+ человек меняется только количество карточек, не структура системы. Новые ценности или изменение весов в формуле вносятся в одном месте. Notion + Zapier + Google Sheets — стек который не требует замены до уровня enterprise.</p>
+    <p>This architecture is scalable — the company can grow without changing its HR stack. As the team grows from 70 to 300+ people, only the number of cards changes, not the structure of the system. New values or adjustments to formula weights are made in one place. Notion + Zapier + Google Sheets is a stack that does not need to be replaced until the enterprise level.</p>
 
-    <h3>Зоны роста процесса</h3>
-    <p>При наличии ресурсов — углубить раздел Development: к каждой зоне привязываются конкретные действия сотрудника и менеджера с дедлайном. В начале следующего цикла первый вопрос: был ли выполнен план развития? Это замыкает петлю между оценкой и реальным развитием. Для первого цикла этот уровень избыточен — важнее запустить процесс и добиться completion rate. Архитектура уже поддерживает это расширение.</p>
-
-    <h3>Ориентировочный эффект</h3>
-    <ul>
-      <li>Время заполнения формы: с ~60 минут до ~20 минут</li>
-      <li>Время HR на администрирование одного цикла: с ~2 дней до ~4 часов</li>
-      <li>Completion rate: цель с 40% до 80%+ за счёт автоматических напоминаний и упрощённой формы</li>
-    </ul>
+    <h3>Areas for process growth</h3>
+    <p>When resources allow — deepen the Development section: each development area is linked to specific actions for both the employee and manager, with a deadline. At the start of the next cycle, the first question is: was the development plan completed? This closes the loop between the review and actual development. For the first cycle, this level of detail is excessive — what matters more is launching the process and achieving completion rate. The architecture already supports this expansion.</p>
   </div>
 
   <hr class="divider">
 
   <!-- METRICS -->
-  <h2>Метрики успеха</h2>
-  <p style="font-size:14px;color:var(--ink-muted);margin-bottom:20px;">Три категории: Process Health (сделали ли мы это?), Quality & Consistency (честно ли мы это сделали?), Business Impact (стал ли бизнес лучше?).</p>
+  <h2>Success metrics</h2>
+  <p style="font-size:14px;color:var(--ink-muted);margin-bottom:20px;">Three categories: Process Health (did we do this?), Quality &amp; Consistency (did we do this fairly?), Business Impact (did the business improve?).</p>
 
   <div class="metrics-section">
     <div class="metrics-group-title">Process Health</div>
     <div class="metrics-grid">
-      <div class="metrics-header">Метрика</div>
-      <div class="metrics-header">Что измеряем</div>
-      <div class="metrics-header">Цель</div>
+      <div class="metrics-header">Metric</div>
+      <div class="metrics-header">What we measure</div>
+      <div class="metrics-header">Target</div>
       <div class="metrics-cell name">Completion Rate</div>
-      <div class="metrics-cell desc">% завершённых review к дедлайну</div>
-      <div class="metrics-cell goal">&gt;90% (vs текущих 40%)</div>
+      <div class="metrics-cell desc">% of reviews completed by the deadline</div>
+      <div class="metrics-cell goal">&gt;90% (vs current 40%)</div>
       <div class="metrics-cell name">Time-to-Complete</div>
-      <div class="metrics-cell desc">Среднее время от запуска до закрытия формы</div>
-      <div class="metrics-cell goal">Снижение за счёт шаблонов</div>
+      <div class="metrics-cell desc">Average time from launch to form submission</div>
+      <div class="metrics-cell goal">Reduction through templates</div>
       <div class="metrics-cell name">UX Survey (NPS)</div>
-      <div class="metrics-cell desc">Оценка удобства новой формы (1–10)</div>
+      <div class="metrics-cell desc">Ease-of-use rating for the new form (1–10)</div>
       <div class="metrics-cell goal">&gt;8</div>
       <div class="metrics-cell name">Manager Engagement</div>
-      <div class="metrics-cell desc">% менеджеров с качественными комментариями</div>
-      <div class="metrics-cell goal">Содержательный фидбек</div>
+      <div class="metrics-cell desc">% of managers providing meaningful comments</div>
+      <div class="metrics-cell goal">Substantive feedback</div>
     </div>
   </div>
 
   <div class="metrics-section">
-    <div class="metrics-group-title">Quality & Consistency</div>
+    <div class="metrics-group-title">Quality &amp; Consistency</div>
     <div class="metrics-grid">
-      <div class="metrics-header">Метрика</div>
-      <div class="metrics-header">Что измеряем</div>
-      <div class="metrics-header">Сигнал</div>
+      <div class="metrics-header">Metric</div>
+      <div class="metrics-header">What we measure</div>
+      <div class="metrics-header">Signal</div>
       <div class="metrics-cell name">Rating Distribution</div>
-      <div class="metrics-cell desc">Распределение оценок по шкале 1–5</div>
-      <div class="metrics-cell goal">Bell curve — выявить реальных high potentials</div>
+      <div class="metrics-cell desc">Distribution of ratings across the 1–5 scale</div>
+      <div class="metrics-cell goal">Bell curve — identify genuine high potentials</div>
       <div class="metrics-cell name">Self-Manager Alignment</div>
-      <div class="metrics-cell desc">Разница между самооценкой и оценкой менеджера</div>
-      <div class="metrics-cell goal">Большой разрыв = проблема в 1:1</div>
+      <div class="metrics-cell desc">Gap between self-assessment and manager rating</div>
+      <div class="metrics-cell goal">Large gap = issue in 1:1s</div>
       <div class="metrics-cell name">Values Heatmap</div>
-      <div class="metrics-cell desc">Какие ценности проседают у команд</div>
-      <div class="metrics-cell goal">Сигнал для точечного обучения</div>
+      <div class="metrics-cell desc">Which values are underperforming across teams</div>
+      <div class="metrics-cell goal">Signal for targeted development</div>
     </div>
   </div>
 
   <div class="metrics-section">
     <div class="metrics-group-title">Business Impact</div>
     <div class="metrics-grid">
-      <div class="metrics-header">Метрика</div>
-      <div class="metrics-header">Что измеряем</div>
-      <div class="metrics-header">Сигнал</div>
+      <div class="metrics-header">Metric</div>
+      <div class="metrics-header">What we measure</div>
+      <div class="metrics-header">Signal</div>
       <div class="metrics-cell name">Correlation with OKRs</div>
-      <div class="metrics-cell desc">Совпадение высоких оценок с выполнением целей — по сотруднику и по отделу</div>
-      <div class="metrics-cell goal">Сбой = система оценки не работает</div>
+      <div class="metrics-cell desc">Alignment of high ratings with goal completion — by employee and by department</div>
+      <div class="metrics-cell goal">Breakdown = performance system is not working</div>
       <div class="metrics-cell name">Retention of High Performers</div>
-      <div class="metrics-cell desc">Текучесть среди сотрудников с высшими баллами</div>
-      <div class="metrics-cell goal">Уходят лучшие = нет видения развития</div>
+      <div class="metrics-cell desc">Turnover among employees with top ratings</div>
+      <div class="metrics-cell goal">Top performers leaving = no visible development path</div>
       <div class="metrics-cell name">Promotion Readiness</div>
-      <div class="metrics-cell desc">% сотрудников готовых к повышению</div>
-      <div class="metrics-cell goal">Данные для talent decisions</div>
+      <div class="metrics-cell desc">% of employees ready for promotion</div>
+      <div class="metrics-cell goal">Data for talent decisions</div>
     </div>
   </div>
 
   <hr class="divider">
 
   <!-- RISKS -->
-  <h2>Карта рисков</h2>
+  <h2>Risk map</h2>
 
   <table class="risk-table">
     <thead>
       <tr>
-        <th>Категория риска</th>
-        <th>Суть риска</th>
-        <th>Митигация</th>
+        <th>Category</th>
+        <th>Risk</th>
+        <th>Mitigation</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="risk-category">Приватность данных</td>
-        <td class="risk-desc">В Notion сложно ограничить доступ к строкам базы — сотрудник может случайно увидеть чужое review через поиск.</td>
-        <td class="risk-mit">Filtered Views с доступом только через персональные ссылки или внедрение Notion Sites / Fillout для ввода без доступа к основной базе.</td>
+        <td class="risk-category">Data privacy</td>
+        <td class="risk-desc">In Notion it is difficult to restrict row-level access — an employee may accidentally see someone else's review through search.</td>
+        <td class="risk-mit">Filtered Views with personal links, or Notion Sites / Fillout for data entry without access to the main database.</td>
       </tr>
       <tr>
-        <td class="risk-category">Технический сбой</td>
-        <td class="risk-desc">Zapier/Make ломается — данные из таск-трекера или в Google Sheets не уходят.</td>
-        <td class="risk-mit">Error Alerts в Slack для HR-админа. Инструкция ручного ввода на крайний случай.</td>
+        <td class="risk-category">Technical failure</td>
+        <td class="risk-desc">Zapier/Make breaks down — data from the task tracker or to Google Sheets does not transfer.</td>
+        <td class="risk-mit">Error alerts in Slack for the HR admin. Manual input instructions as a fallback.</td>
       </tr>
       <tr>
-        <td class="risk-category">Низкая вовлечённость</td>
-        <td class="risk-desc">Те же 60% сотрудников продолжают игнорировать дедлайны.</td>
-        <td class="risk-mit">Геймификация (лидерборды отделов), mobile-first дизайн формы, жёсткая привязка review к выплате бонусов или L&D бюджету.</td>
+        <td class="risk-category">Low engagement</td>
+        <td class="risk-desc">The same 60% of employees continue to miss deadlines.</td>
+        <td class="risk-mit">Gamification, mobile-first form design, hard link between review completion and bonuses or L&amp;D budget.</td>
       </tr>
       <tr>
-        <td class="risk-category">Субъективность (Bias)</td>
-        <td class="risk-desc">Менеджеры ставят оценки по симпатии, а не по результатам.</td>
-        <td class="risk-mit">Calibration Sessions перед финальным утверждением. Поведенческие якоря для каждого уровня. Поле Evidence для каждой оценки.</td>
+        <td class="risk-category">Subjectivity (Bias)</td>
+        <td class="risk-desc">Managers rate based on personal preference rather than results.</td>
+        <td class="risk-mit">Calibration Sessions. Behavioral anchors. Evidence field for each rating.</td>
       </tr>
       <tr>
-        <td class="risk-category">Низкое качество целей</td>
-        <td class="risk-desc">Цели в таск-трекере размытые или не обновляются — данные в форме бесполезны.</td>
-        <td class="risk-mit">Аудит целей вместе с менеджерами перед запуском первого цикла.</td>
+        <td class="risk-category">Low quality of goals</td>
+        <td class="risk-desc">Goals in the task tracker are vague — data in the form becomes meaningless.</td>
+        <td class="risk-mit">Audit of goals together with managers before the first cycle launches.</td>
       </tr>
       <tr>
-        <td class="risk-category">Потеря доверия</td>
-        <td class="risk-desc">Результаты review не повлияли на реальные решения — люди перестают воспринимать PR серьёзно.</td>
-        <td class="risk-mit">До запуска зафиксировать с CEO как результаты влияют на бонусы и повышения, и коммуницировать это команде явно.</td>
+        <td class="risk-category">Loss of trust</td>
+        <td class="risk-desc">Review results did not lead to real decisions — people stop taking the process seriously.</td>
+        <td class="risk-mit">Before launch, align with the CEO on how results connect to decisions, and communicate this clearly to the team.</td>
       </tr>
     </tbody>
   </table>
