@@ -481,13 +481,33 @@
   }
 
   @media (max-width: 600px) {
-    .assumptions { grid-template-columns: 1fr; }
+    .page { padding: 32px 16px; }
+    h1 { font-size: 28px; }
+
+    /* Cards 01-06: single column */
+    .assumptions { grid-template-columns: 1fr !important; }
+
+    /* Form blocks: 2 equal columns */
     .form-blocks { grid-template-columns: repeat(2, 1fr); }
     .form-cols { grid-template-columns: 1fr; }
+
+    /* Rating scale: 2 rows of 3, all equal */
+    .scale-band { flex-wrap: wrap; }
+    .scale-item { flex: 0 0 calc(33.333% - 5px); min-height: 80px; }
+
+    /* Roadmap table: each row becomes a card */
+    .roadmap-table, .roadmap-table tbody, .roadmap-table tr, .roadmap-table td { display: block; width: 100%; }
+    .roadmap-table thead { display: none; }
+    .roadmap-table tr { margin-bottom: 12px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .roadmap-table td { border-bottom: 1px solid var(--border); padding: 10px 14px; box-sizing: border-box; white-space: normal; }
+    .roadmap-table td:first-child { font-weight: 600; background: var(--accent-light); color: var(--accent); width: 100% !important; }
+    .roadmap-table td.empty { display: none; }
+    .roadmap-table tr:last-child td:last-child { border-bottom: none; }
+
+    /* Metrics */
     .metrics-grid { grid-template-columns: 1fr; }
-    h1 { font-size: 28px; }
-    .roadmap-table { font-size: 13px; }
-    .page { padding: 32px 16px; }
+
+    /* Bottom buttons */
     .top-bar, .bottom-bar { flex-direction: column; gap: 12px; align-items: stretch; text-align: center; }
     .btn-next, .back { text-align: center; }
   }
