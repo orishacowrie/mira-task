@@ -295,6 +295,7 @@
     display: flex;
     gap: 6px;
     margin-bottom: 20px;
+    align-items: stretch;
   }
 
   .scale-item {
@@ -302,6 +303,11 @@
     border-radius: 6px;
     padding: 10px 8px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
   }
 
   .scale-item .num {
@@ -476,10 +482,14 @@
 
   @media (max-width: 600px) {
     .assumptions { grid-template-columns: 1fr; }
-    .form-blocks { grid-template-columns: repeat(3, 1fr); }
+    .form-blocks { grid-template-columns: repeat(2, 1fr); }
+    .form-cols { grid-template-columns: 1fr; }
     .metrics-grid { grid-template-columns: 1fr; }
     h1 { font-size: 28px; }
     .roadmap-table { font-size: 13px; }
+    .page { padding: 32px 16px; }
+    .top-bar, .bottom-bar { flex-direction: column; gap: 12px; align-items: stretch; text-align: center; }
+    .btn-next, .back { text-align: center; }
   }
 </style>
 </head>
